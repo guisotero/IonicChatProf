@@ -11,6 +11,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
+
+import { UserService } from "../providers/user/user.service";
+
 const firebaseAPPConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBuaKv3uLyBy4GACRKDZrTOvY_vzP0BPX8",
   authDomain: "ionic-chatprof.firebaseapp.com",
@@ -39,7 +42,9 @@ const firebaseAPPConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    UserService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+   
   ]
 })
 export class AppModule {}
