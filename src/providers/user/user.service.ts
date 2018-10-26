@@ -7,10 +7,13 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from "angularfire2/database";
 import { User } from "../../models/user.model";
 
+
+
+
 @Injectable()
 export class UserService {
 
-  
+
 constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
@@ -19,9 +22,14 @@ constructor(
 ) {
     console.log('Hello UserProvider Provider');
   }
- 
-  create(user: User, uuid: string): Promise<void> {
-    return this.db.object(`/users/${uuid}`)
-      .set(user)
-}
+
+
+
+
+      create(user: User): Promise<void> {
+        return Promise.resolve(this.db.list('/users').push(user));
+    }
+
+
+
 }
