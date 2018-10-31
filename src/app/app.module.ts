@@ -5,10 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { HttpModule } from '@angular/http';
 import {AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -19,7 +19,7 @@ const firebaseAPPConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBuaKv3uLyBy4GACRKDZrTOvY_vzP0BPX8",
   authDomain: "ionic-chatprof.firebaseapp.com",
   databaseURL: "https://ionic-chatprof.firebaseio.com",
-    storageBucket: "ionic-chatprof.appspot.com",
+  storageBucket: "ionic-chatprof.appspot.com",
   messagingSenderId: "978583113116"
 };
 @NgModule({
@@ -33,7 +33,9 @@ const firebaseAPPConfig: FirebaseAppConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAPPConfig),
     HttpClientModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpModule,
+    AngularFireAuthModule
 
   ],
   bootstrap: [IonicApp],

@@ -27,16 +27,14 @@ export class LoginPage {
   });
 
      }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
 
-onSubmit(): void {
-  this.userService.create(this.loginForm.value)
-  .then(() =>{
-    console.log ('Usuario Cadastrado!');
-  });
-
-}
+     onSubmit(): void {
+      this.userService.create(this.loginForm.value)
+      .then(() =>{
+              console.log ('Usuario Cadastrado!');
+          }).catch(error => {
+              console.log('Erro ao criar usuário', error);
+          });
+      }
 
 }
