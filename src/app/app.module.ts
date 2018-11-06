@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import {AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule} from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
 import { UserService } from "../providers/user/user.service";
+import { AuthService } from '../providers/auth/auth.service';
+import { SigninPage } from '../pages/signin/signin';
 
 const firebaseAPPConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBuaKv3uLyBy4GACRKDZrTOvY_vzP0BPX8",
@@ -22,11 +24,15 @@ const firebaseAPPConfig: FirebaseAppConfig = {
   storageBucket: "ionic-chatprof.appspot.com",
   messagingSenderId: "978583113116"
 };
+
+
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    SigninPage
   ],
   imports: [
     BrowserModule,
@@ -37,17 +43,22 @@ const firebaseAPPConfig: FirebaseAppConfig = {
     HttpModule,
     AngularFireAuthModule
 
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    SigninPage
   ],
   providers: [
+    AuthService,
     StatusBar,
     SplashScreen,
     UserService,
+
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
   ]

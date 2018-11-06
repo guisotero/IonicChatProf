@@ -5,10 +5,11 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-
-  <button ion-button block (click) = "Login()">Login</button>
-
-  
+  <ion-list no-lines>
+     <button ion-item *ngFor="let user of users | async"(click)="onChatCreate(user)">
+      {{user.name}}
+    </button>
+  </ion-list>
+ <button ion-button block (click)="Login()">Sign Up</button>
 </ion-content>
