@@ -33,7 +33,7 @@ onChatCreate(user:User): void{
 }
 
   Login(): void{
-      this.navCtrl.push(LoginPage)
+      this.navCtrl.push(HomePage)
     }
 
 

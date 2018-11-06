@@ -52,7 +52,7 @@ export class SigninPage {
   }
 
   onSignup(): void {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(LoginPage);
   }
 
   private showLoading(): Loading {
