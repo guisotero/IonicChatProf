@@ -45,7 +45,7 @@ export class UserService extends BaseService {
 
   userExists(username: string): Observable<boolean> {
     return this.db.list(`/users`,
-      (ref: firebase.database.Reference) => ref.orderByChild('name').equalTo(username)
+      (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
     )
     .valueChanges()
     .map((users: User[]) => {

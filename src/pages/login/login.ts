@@ -10,6 +10,7 @@ import { AuthService } from '../../providers/auth/auth.service';
 import { User } from '../../models/user.model';
 import * as firebase from 'firebase/app';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { HomePage } from '../home/home';
 
 
 @Component({
@@ -63,7 +64,7 @@ export class LoginPage {
             this.userService.create(formUser, uuid)
               .then(() => {
                 console.log('Usuario cadastrado!');
-                this.navCtrl.setRoot(LoginPage);
+                this.navCtrl.setRoot(HomePage);
                 loading.dismiss();
               }).catch((error: any) => {
                 console.log(error);
