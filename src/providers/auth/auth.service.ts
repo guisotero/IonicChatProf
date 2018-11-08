@@ -33,5 +33,8 @@ export class AuthService extends BaseService {
       }).catch(this.handlePromiseError);
   }
 
+  logout(): Promise<any> {
+    return this.afAuth.auth.signOut();
+  }
 
 }
