@@ -13,7 +13,7 @@ import { User } from '../../models/user.model';
 })
 export class HomePage {
 
-
+  view: string = 'chats';
   users: Observable<User[]>;
 
   constructor(
