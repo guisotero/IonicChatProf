@@ -1,14 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Pagina Inicial
-    </ion-title>
-  </ion-navbar>
+
+  <custom-logged-header [title]="view | capitalize:true"  ></custom-logged-header>
 
   <ion-toolbar>
     <ion-segment [(ngModel)]="view">
       <ion-segment-button value="chats">
-        Chats
+         Chats
       </ion-segment-button>
       <ion-segment-button value="users">
         Usuarios
