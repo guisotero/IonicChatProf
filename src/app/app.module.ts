@@ -18,6 +18,7 @@ import { AuthService } from '../providers/auth/auth.service';
 import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header';
 import { CapitalizePipe } from '../capitalize.pipe/capitalize.pipe';
+import { ChatPage } from '../pages/chat/chat';
 
 
 const firebaseAPPConfig: FirebaseAppConfig = {
@@ -33,6 +34,7 @@ const firebaseAPPConfig: FirebaseAppConfig = {
 @NgModule({
   declarations: [
     CapitalizePipe,
+    ChatPage,
     CustomLoggedHeaderComponent,
     MyApp,
     HomePage,
@@ -52,6 +54,7 @@ const firebaseAPPConfig: FirebaseAppConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    ChatPage,
     MyApp,
     HomePage,
     LoginPage,
