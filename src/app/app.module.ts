@@ -1,3 +1,4 @@
+import { ChatService } from './../providers/chat/chat.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -19,6 +20,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header';
 import { CapitalizePipe } from '../capitalize.pipe/capitalize.pipe';
 import { ChatPage } from '../pages/chat/chat';
+
 
 
 const firebaseAPPConfig: FirebaseAppConfig = {
@@ -65,9 +67,10 @@ const firebaseAPPConfig: FirebaseAppConfig = {
     StatusBar,
     SplashScreen,
     UserService,
-
+    ChatService,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+
 
   ]
 })
