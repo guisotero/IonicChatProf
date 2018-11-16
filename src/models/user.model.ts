@@ -9,6 +9,7 @@ export class User {
         public uid: string,
         public photo: string,
         public $key: string
+        
 
     ) {}
 
