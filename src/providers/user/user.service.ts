@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import  'rxjs/operators/map';
+import 'rxjs/operators/map';
 
 import * as firebase from 'firebase/app';
 
@@ -26,15 +26,15 @@ export class UserService extends BaseService {
   users: Observable<User[]>;
   currentUser: AngularFireObject<User>;
 
- constructor(
+  constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
     public firebaseApp: FirebaseApp,
     public http: Http
-) {
-  super();
+  ) {
+    super();
 
-  this.listenAuthState();
+    this.listenAuthState();
   }
 
   private setUsers(uidToExclude: string): void {
@@ -43,9 +43,9 @@ export class UserService extends BaseService {
         (ref: firebase.database.Reference) => ref.orderByChild('name')
       )
     )
-    .map((users: User[]) => {
-      return users.filter((user: User) => user.$key !== uidToExclude);
-    });
+      .map((users: User[]) => {
+        return users.filter((user: User) => user.$key !== uidToExclude);
+      });
   }
 
 
@@ -62,6 +62,10 @@ export class UserService extends BaseService {
 
   }
 
+  get(userId: string): AngularFireObject<User> {
+    return this.db.object<User>(`/users/${userId}`);
+  }
+
   create(user: User, uuid: string): Promise<void> {
     return this.db.object(`/users/${uuid}`)
       .set(user)
@@ -72,10 +76,13 @@ export class UserService extends BaseService {
     return this.db.list(`/users`,
       (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
     )
-    .valueChanges()
-    .map((users: User[]) => {
-      return users.length > 0;
-    }).catch(this.handleObservableError);
+      .valueChanges()
+      .map((users: User[]) => {
+        return users.length > 0;
+      }).catch(this.handleObservableError);
 
+
+
+
+  }
 }
-     }
