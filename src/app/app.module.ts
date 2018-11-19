@@ -20,6 +20,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header';
 import { CapitalizePipe } from '../capitalize.pipe/capitalize.pipe';
 import { ChatPage } from '../pages/chat/chat';
+import { MessageService } from '../providers/message/message.service';
 
 
 
@@ -68,8 +69,10 @@ const firebaseAPPConfig: FirebaseAppConfig = {
     SplashScreen,
     UserService,
     ChatService,
+    MessageService
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+
 
 
   ]

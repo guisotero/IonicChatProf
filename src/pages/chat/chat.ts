@@ -3,6 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth.service';
 import { UserService } from '../../providers/user/user.service';
 import { User } from '../../models/user.model';
+import { AngularFireList } from 'angularfire2/database';
+import { Message } from '../../models/message.model';
+import { MessageService } from '../../providers/message/message.service';
 
 
 
@@ -14,13 +17,14 @@ import { User } from '../../models/user.model';
 })
 export class ChatPage {
 
-  messages: string[] = [];
+  messages: AngularFireList<Message>;
   pageTitle: string;
   sender: User;
   recipient: User;
 
   constructor(
     public authService: AuthService,
+    public messageService: MessageService,
     public navCtrl: NavController,
     public navParams: NavParams,
     public userService: UserService
@@ -40,12 +44,27 @@ export class ChatPage {
       .subscribe((currentUser: User) => {
         this.sender = currentUser;
 
-      });
+        this.messages = this.messageService
+        .getMessages(this.sender.$key,this.recipient.$key);
 
-  }
+        this.messages
+        .valueChanges()
+        .first()
+        .subscribe((messages: Message[]) => {
+
+          if (messages.length === 0) {
+
+            this.messages = this.messageService
+             .getMessages(this.recipient.$key, this.sender.$key);
+
+          }
+           });
+          });
+    
+    }
 
   sendMessage(newMessage: string): void {
-this.messages.push(newMessage);
+     this.messages.push(newMessage);
 
   }
 
